@@ -1,8 +1,5 @@
 node {
   
-   stage('Preparation') {
-     sh "cd config-service"  
-   }
    stage('jar instalation') {
      sh "./mvnw clean install -DskipTests"
    }
