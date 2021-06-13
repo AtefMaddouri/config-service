@@ -7,16 +7,13 @@ node {
     stage 'Clone the project'
     git 'https://github.com/AtefMaddouri/config-service.git'
 
-   stage('Permissions') {
-        sh 'chmod 775 *'
-   }
    stage('Preparation') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"    
    }
 
    stage('jar instalation') {        
-       sh "mvn clean "
+       sh "./mvnw clean "
    }
 
    stage('docker build/push') {        
