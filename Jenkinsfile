@@ -9,7 +9,7 @@ node {
    }
 
    stage('jar instalation') {        
-       sh "./mvnw sudo clean install -DskipTests"
+       sh "./mvnw clean install -DskipTests"
    }
 
    stage('docker build/push') {        
@@ -17,7 +17,7 @@ node {
    }
 
    stage('Run On dev server'){
-     sh "docker stop config-service || true && /usr/local/bin/docker/docker rm config-service || true  "
+    // sh "docker stop config-service || true && /usr/local/bin/docker/docker rm config-service || true  "
      sh "docker run --name config-service -d -p 8761:8761 --restart always atef/config-service:1.0 "
 
    }
