@@ -27,7 +27,8 @@ pipeline {
         }
         stage("run image on server") {
             steps {
-                sh "docker stop config-service || true && /usr/local/bin/docker/docker rm config-service || true  "
+                sh "docker stop config-service || true"
+                sh "docker rm image config-service || true"
                 sh " docker run --name config-service -d -p 8761:8761 --restart always atef/config-service:1.0 "
             }
         }
