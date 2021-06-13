@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  config-service:
+    image: atef/config-service:1.0
+    container_name: config-service
+    build: config-service      
+    ports:
+      - "8888:8888"
+    restart: on-failure
+    volumes:
+      - ./config-service
+    healthcheck:
+      test: curl -f -s http://localhost:8888/actuator/health || exit 1
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
