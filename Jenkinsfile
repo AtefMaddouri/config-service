@@ -1,7 +1,7 @@
 node {
   
    stage('jar instalation') {
-     sh "./mvnw clean install -DskipTests"
+     sh "./mvn clean install -DskipTests"
    }
 
 //    stage('docker build/push') {        
