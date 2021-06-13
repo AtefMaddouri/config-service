@@ -2,7 +2,10 @@ node {
   
       // reference to maven
 	    // ** NOTE: This 'maven-3.5.2' Maven tool must be configured in the Jenkins Global Configuration.   
-	    def mvnHome = tool 'maven-3.10.0'
+	    // def mvnHome = tool 'maven-3.10.0'
+
+    stage 'Clone the project'
+    git 'https://github.com/AtefMaddouri/config-service.git'
 
    stage('Permissions') {
         sh 'chmod 775 *'
