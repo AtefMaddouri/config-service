@@ -1,7 +1,9 @@
 node {
   
    stage('jar instalation') {
-     sh "./mvn clean "
+      parallel 'Compilation': {
+                sh "./mvnw clean install -DskipTests"
+                }
    }
 
 //    stage('docker build/push') {        
