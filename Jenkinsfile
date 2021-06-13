@@ -1,24 +1,24 @@
 node {
   
-   def commit_id
+   stage('Permissions') {
+        steps {sh 'chmod 775 *'}
+   }
    stage('Preparation') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"    
    }
 
    stage('jar instalation') {        
-       sh "./mvnw clean install -DskipTests"
+       sh "./mvnw sudo clean install -DskipTests"
    }
 
    stage('docker build/push') {        
-        sh  "docker build -t logisitics/backend_partner_prod${commit_id}  -f Dockerfile.prod  ."
+        // sh  "docker run --name config-service -d -p 8761:8761"
    }
 
    stage('Run On dev server'){
-
-
-     sh "docker stop backend_partner_prod || true && /usr/local/bin/docker/docker rm backend_partner_prod || true  "
-     sh "docker run -d --name backend_partner_prod --restart always -p 3020:3020 logisitics/backend_partner_prod${commit_id}  "
+     sh "docker stop config-service || true && /usr/local/bin/docker/docker rm config-service || true  "
+     sh "docker run --name config-service -d -p 8761:8761 --restart always atef/config-service:1.0 "
 
    }
 
