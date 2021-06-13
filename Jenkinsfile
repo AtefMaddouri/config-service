@@ -13,6 +13,11 @@ pipeline {
     }
 
     stages {
+      stage("test") {
+            steps {
+                sh "./mvnw -version"
+            }
+        }
         stage("Build") {
             steps {
                 sh "mvn -version"
