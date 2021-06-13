@@ -1,7 +1,7 @@
 node {
   
    stage('Permissions') {
-        steps {sh 'chmod 775 *'}
+        sh 'chmod 775 *'
    }
    stage('Preparation') {
      checkout scm
