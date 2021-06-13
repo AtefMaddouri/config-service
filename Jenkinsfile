@@ -1,5 +1,9 @@
 node {
   
+      // reference to maven
+	    // ** NOTE: This 'maven-3.5.2' Maven tool must be configured in the Jenkins Global Configuration.   
+	    def mvnHome = tool 'maven-3.5.2'
+
    stage('Permissions') {
         sh 'chmod 775 *'
    }
@@ -9,7 +13,7 @@ node {
    }
 
    stage('jar instalation') {        
-       sh "./mvnw clean "
+       sh "mvn clean "
    }
 
    stage('docker build/push') {        
