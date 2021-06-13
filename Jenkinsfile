@@ -9,7 +9,7 @@ node {
    }
 
    stage('jar instalation') {        
-       sh "./mvnw clean install -DskipTests"
+       sh "./mvnw clean "
    }
 
    stage('docker build/push') {        
