@@ -27,8 +27,7 @@ pipeline {
         }
         stage("run image on server") {
             steps {
-                sh " docker-compose up "
-                // sh " docker run --name config-service -d -p 8761:8761 --restart always atef/discovery-service:1.0 "
+                sh " docker run --name config-service -d -p 8761:8761 --restart always atef/discovery-service:1.0 "
             }
         }
     }
