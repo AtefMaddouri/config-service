@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh "docker stop config-service || true"
                 sh "docker rm image config-service || true"
-                sh " docker run --name config-service -d -p 8888:8888 --restart always atef/config-service:1.0 "
+                sh " docker run --name config-service --network=atefazure_default -d -p 8888:8888 --restart always atef/config-service:1.0 "
             }
         }
     }
