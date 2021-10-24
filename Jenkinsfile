@@ -1,15 +1,15 @@
 #!groovy
 
 pipeline {
-    environment {
-        JAVA_TOOL_OPTIONS = "-Duser.home=/var/maven"
-    }
+   // environment {
+   //     JAVA_TOOL_OPTIONS = "-Duser.home=/var/maven"
+   // }
 
     agent any
 
-    tools {
-        maven "maven:3.6.3" // You need to add a maven with name "3.6.0" in the Global Tools Configuration page
-    }
+   // tools {
+   //     maven "maven:3.6.3" // You need to add a maven with name "3.6.0" in the Global Tools Configuration page
+   // }
     // agent {
     //     any {
     //         image "maven:3.6.3-jdk-8-alpine"
